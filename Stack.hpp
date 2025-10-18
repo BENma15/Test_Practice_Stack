@@ -15,7 +15,7 @@ public:
     // TODO: Implement constructor
     // Initialize data array with given capacity, top to -1
     Stack(int maxSize = 100) : capacity(maxSize), top(-1) {
-        // TODO: Initialize data array with given capacity, top to -1
+        data = new T[capacity];
     }
     
     // TODO: Implement destructor
@@ -25,20 +25,25 @@ public:
     
     // TODO: Implement Push(const T& value) operation
     void Push(const T& value) {
-        // TODO: Add element to the top of the stack
-        // Throw an exception if stack is full
+        if (top >= capacity-1) {
+            return;
+        }
+
+        data[++top] = value;
     }
     
     // TODO: Implement Pop() operation
     T Pop() {
-        // TODO: Remove and return the top element
-        // Throw an exception if stack is empty
+        if (top == -1) {
+            return 0;
+        }
+
+        return data[top--]; 
     }
     
     // TODO: Implement Top() operation
     T Top() const {
-        // TODO: Return the top element without removing it
-        // Throw an exception if stack is empty
+        return data[top];
     }
     
     // Utility functions
